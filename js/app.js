@@ -37,8 +37,7 @@
                 return false;
             }
 
-
-            YQLHelper.queryYQL(zip, radius, query, function(response) {
+            PlacesHelper.queryYQL(zip, radius, query, function(response) {
 
                 $('#searchContainer').empty();
                 MapHelper.clearMarkers();
@@ -70,6 +69,8 @@
             }, function(jqXHR, textStatus, error) {
                 console.log(error);
             });
+            
+            MapHelper.queryPlaces(zip, radius, query);
 
             return false;
         });

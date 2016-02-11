@@ -87,4 +87,20 @@ var MapHelper = {};
         markersArray.length = 0;
     };
 
+    MapHelper.queryPlaces = function(zip, radius, query){
+        var request = {
+            radius: Number(radius) * 1069, //convert miles tp meters
+            query: query
+        };
+        service = new google.maps.places.PlacesService(map);
+        service.textSearch(request, function(results, status) {
+            if (status == google.maps.places.PlacesServiceStatus.OK) {
+                for (var i = 0; i < results.length; i++) {
+                  var place = results[i];
+                  console.log(place);
+                }
+            }
+        });
+    }
+
 })(jQuery);
